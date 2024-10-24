@@ -1,4 +1,9 @@
-import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
+import {
+  Input,
+  InputGroup,
+  InputLeftElement,
+  useBreakpointValue,
+} from "@chakra-ui/react";
 import { useRef } from "react";
 import { BsSearch } from "react-icons/bs";
 
@@ -8,6 +13,10 @@ interface Props {
 
 const SearchInput = ({ onSearch }: Props) => {
   const ref = useRef<HTMLInputElement>(null);
+  const placeholder = useBreakpointValue({
+    base: "Search...",
+    md: "Search games...",
+  });
   return (
     <form
       onSubmit={(event) => {
@@ -20,7 +29,7 @@ const SearchInput = ({ onSearch }: Props) => {
         <Input
           ref={ref}
           borderRadius={20}
-          placeholder="Search games..."
+          placeholder={placeholder}
           variant="filled"
         />
       </InputGroup>
